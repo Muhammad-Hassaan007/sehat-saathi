@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --text-scale: 1;
+    --touch-target-min: 56px;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Accessible Text Sizing Modes (UX-02) */
+.font-scale-normal {
+  --text-scale: 1;
+}
+
+.font-scale-large {
+  --text-scale: 1.15;
+}
+
+.font-scale-xlarge {
+  --text-scale: 1.35;
+}
+
+/* High Contrast Mode (UX-04: WCAG AAA 7:1) */
+.high-contrast-mode {
+  filter: contrast(125%);
+}
+
+.high-contrast-mode body {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+.high-contrast-mode .bg-white {
+  background-color: #FFFFFF !important;
+  border-color: #000000 !important;
+}
+
+.high-contrast-mode button {
+  border-width: 2px !important;
+  font-weight: 800 !important;
+}
+
+/* Pulse animation for voice state */
+@keyframes mic-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(72, 157, 84, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 24px rgba(72, 157, 84, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(72, 157, 84, 0);
+  }
+}
+
+@keyframes siren-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 28px rgba(220, 38, 38, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+.animate-mic-pulse {
+  animation: mic-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.animate-siren-pulse {
+  animation: siren-pulse 1.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Hide scrollbars for clean mobile feel */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
